@@ -2,7 +2,7 @@ Option Explicit
 
 ' erweitert Excel um eine Arbeitstage-Formel mit ewigem Kalender der freien Tage (nur NRW)
 
-Function ARBEITSTAGEINTEGRIERT(Datum As Date, Arbeitstage As Integer)
+Function ARBEITSTAGINTEGRIERT(Datum As Date, Arbeitstage As Integer)
 Dim Jahr As Integer
 Dim Monat As Integer
 Dim Tag As Integer
@@ -25,7 +25,7 @@ Feiertage(4) = DateSerial(Jahr, 5, 1)   'ErsterMai
 Feiertage(5) = Ostersonntag + 39        'Christihimmelfahrt
 
 Feiertage(6) = Ostersonntag + 49        'Pfingstsonntag
-Feiertage(7) = Pfingstsonntag + 1       'Pfingstmontag
+Feiertage(7) = Ostersonntag + 50        'Pfingstmontag
 
 Feiertage(8) = Ostersonntag + 60        'Frohnleichnahm
 
@@ -36,13 +36,14 @@ Feiertage(10) = DateSerial(Jahr, 11, 1) 'Allerheiligen
 Feiertage(11) = DateSerial(Jahr, 12, 25) 'Weihnachten1
 Feiertage(12) = DateSerial(Jahr, 12, 26) 'Weihnachten2
 
-ULTIMO = Application.WorksheetFunction.WorkDay(Datum, Arbeitstage, Feiertage)
+ARBEITSTAGINTEGRIERT = Application.WorksheetFunction.WorkDay(Datum, Arbeitstage, Feiertage)
 
 End Function
 
 Public Function Eastersunday(Jahr As Long) As Date
 Dim a As Long, b As Long, c As Long, d As Long, e As Long, f As Long
   
+  ' Die "magische" Gauss-Formel
   a = Jahr Mod 19
   b = Jahr \ 100
   c = (8 * b + 13) \ 25 - 2
@@ -59,3 +60,4 @@ Dim a As Long, b As Long, c As Long, d As Long, e As Long, f As Long
 Eastersunday = DateSerial(Jahr, 3, e + f + 22)
   
 End Function
+
