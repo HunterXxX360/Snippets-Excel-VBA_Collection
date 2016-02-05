@@ -40,7 +40,7 @@ ARBEITSTAGINTEGRIERT = Application.WorksheetFunction.WorkDay(Datum, Arbeitstage,
 
 End Function
 
-Public Function Eastersunday(Jahr As Long) As Date
+Private Function Eastersunday(Jahr As Long) As Date
 Dim a As Long, b As Long, c As Long, d As Long, e As Long, f As Long
   
   ' Die "magische" Gauss-Formel
